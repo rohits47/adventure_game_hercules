@@ -1,9 +1,15 @@
 {
     "resource_types": {
-        "person": [],
-        "monster": [],
-        "robot": [],
-        "thing": []
+        "person": {
+            "subtypes": [
+                "monster",
+                "hero",
+                "robot",
+                "god"
+            ]
+        },
+        "room": {},
+        "thing": {}
     },
     "resources": []
 }
