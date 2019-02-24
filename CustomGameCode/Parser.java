@@ -1,3 +1,4 @@
+
 /*
  * Author:	Michael Kolling
  * Version: 1.0
@@ -19,51 +20,45 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-class Parser 
-{
+class Parser {
 
-    private CommandWords commands;	// holds all valid command words
+    private CommandWords commands; // holds all valid command words
 
-    public Parser() 
-    {
+    public Parser() {
         commands = new CommandWords();
     }
 
-    public Command getCommand() 
-    {
-        String inputLine = "";	 // will hold the full input line
+    public Command getCommand() {
+        String inputLine = ""; // will hold the full input line
         String word1;
         String word2;
         String word3;
         String word4;
 
-        System.out.print("> ");		// print prompt
+        System.out.print("> "); // print prompt
 
-        BufferedReader reader = 
-            new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             inputLine = reader.readLine();
-        }
-        catch(java.io.IOException exc) {
-            System.out.println ("There was an error during reading: "
-                                + exc.getMessage());
+        } catch (java.io.IOException exc) {
+            System.out.println("There was an error during reading: " + exc.getMessage());
         }
 
         StringTokenizer tokenizer = new StringTokenizer(inputLine);
 
-        if(tokenizer.hasMoreTokens())
-            word1 = tokenizer.nextToken();		// get first word
+        if (tokenizer.hasMoreTokens())
+            word1 = tokenizer.nextToken(); // get first word
         else
             word1 = null;
-        if(tokenizer.hasMoreTokens())
-            word2 = tokenizer.nextToken();		// get second word
+        if (tokenizer.hasMoreTokens())
+            word2 = tokenizer.nextToken(); // get second word
         else
             word2 = null;
-        if(tokenizer.hasMoreTokens())           // get third word
+        if (tokenizer.hasMoreTokens()) // get third word
             word3 = tokenizer.nextToken();
         else
             word3 = null;
-        if(tokenizer.hasMoreTokens())           // get fourth word
+        if (tokenizer.hasMoreTokens()) // get fourth word
             word4 = tokenizer.nextToken();
         else
             word4 = null;
@@ -73,11 +68,11 @@ class Parser
         // Now check whether this word is known. If so, create a command
         // with it. If not, create a "nil" command (for unknown command).
 
-        if(commands.isCommand(word1))
+        if (commands.isCommand(word1))
             return new Command(word1, word2, word3, word4);
-        else if(commands.isCommand(word2))
+        else if (commands.isCommand(word2))
             return new Command(null, word2, word3, word4);
-        else if(commands.isCommand(word3))
+        else if (commands.isCommand(word3))
             return new Command(null, null, word3, word4);
         else
             return new Command(null, null, null, word4);
@@ -86,8 +81,7 @@ class Parser
     /**
      * Print out a list of valid command words.
      */
-    public void showCommands()
-    {
+    public void showCommands() {
         commands.showAll();
     }
 }
