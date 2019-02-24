@@ -1,0 +1,9 @@
+{
+    "resource_types": {
+        "person": [],
+        "monster": [],
+        "robot": [],
+        "thing": []
+    },
+    "resources": []
+}
